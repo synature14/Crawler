@@ -54,6 +54,7 @@
 		9801C00C21A833D000F59CD1 /* Crawler */ = {
 			isa = PBXGroup;
 			children = (
+				9826227E21A8EDE500C839BA /* Model */,
 				9801C00D21A833D000F59CD1 /* AppDelegate.swift */,
 				9801C00F21A833D000F59CD1 /* ViewController.swift */,
 				9801C01121A833D000F59CD1 /* Main.storyboard */,
@@ -62,6 +63,13 @@
 				9801C01921A833D100F59CD1 /* Info.plist */,
 			);
 			path = Crawler;
+			sourceTree = "<group>";
+		};
+		9826227E21A8EDE500C839BA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
