@@ -12,6 +12,10 @@
 		9801C01321A833D000F59CD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9801C01121A833D000F59CD1 /* Main.storyboard */; };
 		9801C01521A833D100F59CD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9801C01421A833D100F59CD1 /* Assets.xcassets */; };
 		9801C01821A833D100F59CD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9801C01621A833D100F59CD1 /* LaunchScreen.storyboard */; };
+		98B7848821AA5A77004A037E /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B7848721AA5A77004A037E /* PostViewController.swift */; };
+		98B7848A21AA5B12004A037E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B7848921AA5B12004A037E /* Post.swift */; };
+		98B7849421AA62F0004A037E /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B7849221AA62F0004A037E /* ListTableViewCell.swift */; };
+		98B7849521AA62F0004A037E /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98B7849321AA62F0004A037E /* ListTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		9801C01421A833D100F59CD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9801C01721A833D100F59CD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9801C01921A833D100F59CD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98B7848721AA5A77004A037E /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		98B7848921AA5B12004A037E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		98B7849221AA62F0004A037E /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		98B7849321AA62F0004A037E /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,7 @@
 		9801C00C21A833D000F59CD1 /* Crawler */ = {
 			isa = PBXGroup;
 			children = (
+				98B7848B21AA6025004A037E /* UI */,
 				9826227E21A8EDE500C839BA /* Model */,
 				9801C00D21A833D000F59CD1 /* AppDelegate.swift */,
 				9801C00F21A833D000F59CD1 /* ViewController.swift */,
@@ -61,6 +70,7 @@
 				9801C01421A833D100F59CD1 /* Assets.xcassets */,
 				9801C01621A833D100F59CD1 /* LaunchScreen.storyboard */,
 				9801C01921A833D100F59CD1 /* Info.plist */,
+				98B7848721AA5A77004A037E /* PostViewController.swift */,
 			);
 			path = Crawler;
 			sourceTree = "<group>";
@@ -68,8 +78,18 @@
 		9826227E21A8EDE500C839BA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				98B7848921AA5B12004A037E /* Post.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		98B7848B21AA6025004A037E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				98B7849221AA62F0004A037E /* ListTableViewCell.swift */,
+				98B7849321AA62F0004A037E /* ListTableViewCell.xib */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,6 +153,7 @@
 				9801C01821A833D100F59CD1 /* LaunchScreen.storyboard in Resources */,
 				9801C01521A833D100F59CD1 /* Assets.xcassets in Resources */,
 				9801C01321A833D000F59CD1 /* Main.storyboard in Resources */,
+				98B7849521AA62F0004A037E /* ListTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,8 +164,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98B7848821AA5A77004A037E /* PostViewController.swift in Sources */,
 				9801C01021A833D000F59CD1 /* ViewController.swift in Sources */,
 				9801C00E21A833D000F59CD1 /* AppDelegate.swift in Sources */,
+				98B7848A21AA5B12004A037E /* Post.swift in Sources */,
+				98B7849421AA62F0004A037E /* ListTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

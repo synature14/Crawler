@@ -11,15 +11,35 @@ import Foundation
 
 class ViewController: UIViewController {
 
-    let buyAndSellBoard = URL(string: "https://www.clien.net/service/board/jirum/")
+    let buyAndSellBoard = URL(string: "https://www.clien.net/service/board/jirum/")!
+    let tableView = UITableView()
+    var visitedURL: Set<URL>! {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initUI()
         
-        let pageURL = buyAndSellBoard!.absoluteString + "?&od=T31&po="
+        let pageURL = buyAndSellBoard.absoluteString + "?&od=T31&po="
         print("*** pageURL = \(pageURL)")
         eachPage(of: pageURL)
     }
+    
+    func initUI() {
+        let frame = CGRect(x: 0, y: 50, width: self.view.bounds.width, height: self.view.bounds.height - 50)
+        tableView.frame = frame
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        tableView.separatorColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        
+        let cellNib = UINib(nibName: "ListTableViewCell", bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: "ListTableViewCell")
+        
+        self.view.addSubview(tableView)
+    }
+    
     
     func eachPage(of urlString: String) {
         for pageIndex in 0...10 {
@@ -32,11 +52,10 @@ class ViewController: UIViewController {
     private func subURLs(_ url: URL) {
         do {
 
-            let tag = "(?<=<a href=\"/service/board/jirum/)([^\"]+)(?=\")"
+            let pattern = "(?<=<a href=\"/service/board/jirum/)([^\"]+)(?=\")"
             
-            let reg = try NSRegularExpression(pattern: tag, options: .caseInsensitive)
+            let reg = try NSRegularExpression(pattern: pattern, options: .caseInsensitive)
             var urlList: [URL] = [url]
-            var visitedURL = Set<URL>()
             
             while urlList.popLast() != nil {
                 let contents = try String(contentsOf: url)
@@ -48,7 +67,7 @@ class ViewController: UIViewController {
                 
                 for urlString in matchedStrings {
                     // URL 검증
-                    if let url = verifyURL(urlString: buyAndSellBoard!.absoluteString + urlString), !visitedURL.contains(url) {
+                    if let url = verifyURL(urlString: buyAndSellBoard.absoluteString + urlString), !visitedURL.contains(url) {
                         urlList.append(url)
                         visitedURL.insert(url)
                     }
@@ -70,3 +89,17 @@ class ViewController: UIViewController {
     }
 }
 
+
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return visitedURL.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as! ListTableViewCell
+        cell.property = visitedURL![visitedURL.index(visitedURL.startIndex, offsetBy: indexPath.row)].absoluteString
+        return cell
+    }
+    
+    
+}

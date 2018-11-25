@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O4h-DO-gS2">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                    <color key="backgroundColor" red="0.77165801629999997" green="0.86146024659999998" blue="0.92166262870000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Euf-Lt-53C"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Afj-dO-WLZ" customClass="BuyAndSellListTableView">
+                    <rect key="frame" x="0.0" y="50" width="375" height="617"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="separatorColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Afj-dO-WLZ" secondAttribute="trailing" id="1b0-ze-PFh"/>
+                <constraint firstItem="O4h-DO-gS2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="23L-oy-Qf0"/>
+                <constraint firstItem="O4h-DO-gS2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="LTk-be-jaX"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="O4h-DO-gS2" secondAttribute="trailing" id="VGv-hb-X8U"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Afj-dO-WLZ" secondAttribute="bottom" id="ZFJ-bu-nmU"/>
+                <constraint firstItem="Afj-dO-WLZ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ura-dH-PTh"/>
+                <constraint firstItem="Afj-dO-WLZ" firstAttribute="top" secondItem="O4h-DO-gS2" secondAttribute="bottom" id="wC6-3S-bj0"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="138.40000000000001" y="152.47376311844079"/>
+        </view>
+    </objects>
+</document>
