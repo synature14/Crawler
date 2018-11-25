@@ -10,6 +10,12 @@ import UIKit
 
 class PostViewController: UIViewController {
 
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,6 +39,17 @@ class PostViewController: UIViewController {
         }
         
         return ""
+    }
+    
+    @IBAction func backButtonTapped(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    static func create() -> PostViewController {
+        if let vc = Bundle.main.loadNibNamed("PostDetailView", owner: nil, options: nil)?.first as? PostViewController {
+            return vc
+        }
+        return UIViewController() as! PostViewController
     }
 
 }

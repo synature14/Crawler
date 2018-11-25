@@ -29,6 +29,11 @@ class ViewController: UIViewController {
     }
     
     func initUI() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        visitedURL = Set<URL>()
+        
         let frame = CGRect(x: 0, y: 50, width: self.view.bounds.width, height: self.view.bounds.height - 50)
         tableView.frame = frame
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
@@ -42,7 +47,7 @@ class ViewController: UIViewController {
     
     
     func eachPage(of urlString: String) {
-        for pageIndex in 0...10 {
+        for pageIndex in 0...1 {
             if let url = verifyURL(urlString: urlString + String(pageIndex)) {
                 self.subURLs(url)
             }
@@ -67,7 +72,8 @@ class ViewController: UIViewController {
                 
                 for urlString in matchedStrings {
                     // URL 검증
-                    if let url = verifyURL(urlString: buyAndSellBoard.absoluteString + urlString), !visitedURL.contains(url) {
+                    let totalURLString = buyAndSellBoard.absoluteString + urlString
+                    if let url = verifyURL(urlString: totalURLString), !visitedURL.contains(url) {
                         urlList.append(url)
                         visitedURL.insert(url)
                     }
@@ -87,6 +93,10 @@ class ViewController: UIViewController {
         }
         return nil
     }
+    
+    static func create() -> ViewController {
+        return ViewController()
+    }
 }
 
 
@@ -99,6 +109,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as! ListTableViewCell
         cell.property = visitedURL![visitedURL.index(visitedURL.startIndex, offsetBy: indexPath.row)].absoluteString
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // PostVC로 이동해야함
+        let postVC = PostViewController.create()
+        self.navigationController?.pushViewController(postVC, animated: true)
     }
     
     
