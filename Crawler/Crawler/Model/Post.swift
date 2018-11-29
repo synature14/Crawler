@@ -21,13 +21,19 @@ struct Post {
         // price 정보 있으면 price에 넣기
     
         // 타이틀의 마지막 ": 클리앙" 을 삭제해줘야함
+        // uploadDate 도 개행문자 제거해줘야함
         var filteredTitle = ""
+        var filteredDate = ""
         do {
             let removeClienReg = try NSRegularExpression(pattern: "[^\"]+(?= : 클리앙)", options: .caseInsensitive)
             filteredTitle = removeClienReg.matches(in: title, options: [], range: NSRange(location: 0, length: title.utf16.count))
                 .compactMap { Range($0.range, in: title) }
                 .map { String(title[$0]) }.first!
             
+            let dateReg = try NSRegularExpression(pattern: "[^\"]+(?=\\n)", options: .caseInsensitive)
+            filteredDate = dateReg.matches(in: date, options: [], range: NSRange(location: 0, length: date.utf16.count))
+                .compactMap { Range($0.range, in: date) }
+                .map { String(date[$0]) }.first!
             
         } catch {
             print(error)
@@ -38,7 +44,7 @@ struct Post {
         self.purchaseLink = link
         self.image = image
         self.explain = explain
-        self.uploadDate = date
+        self.uploadDate = filteredDate
     }
 }
 
