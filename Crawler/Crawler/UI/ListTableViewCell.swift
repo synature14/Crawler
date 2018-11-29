@@ -10,13 +10,15 @@ import UIKit
 
 class ListTableViewCell: UITableViewCell {
 
-    var property: String? {
+    var property: Post? {
         didSet {
-            titleLabel.text = property
+            titleLabel.text = property?.title
+            dateLabel.text = property?.uploadDate
         }
     }
     
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

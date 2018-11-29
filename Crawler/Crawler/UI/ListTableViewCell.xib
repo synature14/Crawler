@@ -20,20 +20,34 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ogx-c5-5X8">
-                        <rect key="frame" x="15" y="14.5" width="290" height="14.5"/>
-                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                        <rect key="frame" x="15" y="5" width="223" height="33.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                         <color key="textColor" red="0.087302011989999997" green="0.52902375670000001" blue="0.50679825430000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="50" translatesAutoresizingMaskIntoConstraints="NO" id="LrK-Ps-jSZ">
+                        <rect key="frame" x="258" y="16" width="50" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="7AV-9U-yUm"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="Ogx-c5-5X8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="5rq-GQ-k25"/>
+                    <constraint firstAttribute="trailing" secondItem="LrK-Ps-jSZ" secondAttribute="trailing" constant="12" id="LxB-ih-H6L"/>
+                    <constraint firstItem="LrK-Ps-jSZ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="S0m-6R-qmu"/>
+                    <constraint firstAttribute="bottom" secondItem="Ogx-c5-5X8" secondAttribute="bottom" constant="5" id="X72-f4-5PJ"/>
                     <constraint firstItem="Ogx-c5-5X8" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="e6b-YF-y2v"/>
+                    <constraint firstItem="LrK-Ps-jSZ" firstAttribute="leading" secondItem="Ogx-c5-5X8" secondAttribute="trailing" constant="20" id="kWK-v9-3uN"/>
                     <constraint firstItem="Ogx-c5-5X8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="svo-Vg-EGN"/>
-                    <constraint firstAttribute="trailing" secondItem="Ogx-c5-5X8" secondAttribute="trailing" constant="15" id="wsK-s2-GIp"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="dateLabel" destination="LrK-Ps-jSZ" id="ayJ-r8-RWD"/>
                 <outlet property="titleLabel" destination="Ogx-c5-5X8" id="oaw-Zu-eeK"/>
             </connections>
             <point key="canvasLocation" x="52.799999999999997" y="48.575712143928037"/>

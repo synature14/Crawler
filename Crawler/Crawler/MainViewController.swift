@@ -13,13 +13,13 @@ class MainViewController: UIViewController {
 
     let buyAndSellBoard = URL(string: "https://www.clien.net/service/board/jirum/")!
     let tableView = UITableView()
-    var visitedURL: Set<URL>! {
+    var visitedURL: Set<URL>!
+    
+    var postArray: [Post] = [] {
         didSet {
             tableView.reloadData()
         }
     }
-    
-    var postArray: [Post] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -150,13 +150,18 @@ extension MainViewController {
             
             
             // 이미지 소스 파싱
-            var matchedImage: String?
+            var matchedImage: [String]?
             if contents.contains("<img class=\"fr-dib fr-fil\" src=\"") {
                 let imageReg = try NSRegularExpression(pattern: "(?<=<img class=\"fr-dib fr-fil\" src=\")([^\"]+)", options: .caseInsensitive)
                 matchedImage = imageReg.matches(in: contents, options: [], range: NSRange(location: 0, length: contentsLength))
                     .compactMap { Range($0.range, in: contents) }
-                    .map { String(contents[$0]) }.first
+                    .map { String(contents[$0]) }
                 
+            } else if contents.contains("(?<=<img src=\").+(?=class=\"fr-fic fr-dii)") {
+                let imageReg = try NSRegularExpression(pattern: "(?<=<img src=\").+(?=class=\"fr-fic fr-dii)", options: .caseInsensitive)
+                matchedImage = imageReg.matches(in: contents, options: [], range: NSRange(location: 0, length: contentsLength))
+                    .compactMap { Range($0.range, in: contents) }
+                    .map { String(contents[$0]) }
             }
             
             
@@ -185,12 +190,12 @@ extension MainViewController {
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return visitedURL.count
+        return postArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as! ListTableViewCell
-        cell.property = visitedURL![visitedURL.index(visitedURL.startIndex, offsetBy: indexPath.row)].absoluteString
+        cell.property = postArray[indexPath.row]
         return cell
     }
     

@@ -9,18 +9,21 @@
 import UIKit
 
 class PostViewController: UIViewController {
-
+    
+    var post: Post! {
+        didSet {
+            
+        }
+    }
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let titlePattern = "(?<=<span>)([^]+)(?=</span>)"
-//        let title = htmlParse(of: url, pattern: titlePattern)
+        
     }
     
     private func htmlParse(of url: URL, pattern: String) -> String {
