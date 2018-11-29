@@ -12,7 +12,9 @@ class PostViewController: UIViewController {
     
     var post: Post! {
         didSet {
-            
+            self.titleLabel.text = post.title
+            self.contentLabel.text = post.explain
+//            self.imageView.image = UIImage.  // url로 불러들인 이미지를 이미지뷰에 넣어야함
         }
     }
     

@@ -19,12 +19,21 @@ struct Post {
     
     init(title: String, writer: String, link: String?, image: [String]?, explain: String, date: String) {
         // price 정보 있으면 price에 넣기
-        
-        self.title = title
+    
         // 타이틀의 마지막 ": 클리앙" 을 삭제해줘야함
-        self.title.trimmingCharacters(in: ["앙"])
-        self.title.trimmingCharacters(in: ["리"])
+        var filteredTitle = ""
+        do {
+            let removeClienReg = try NSRegularExpression(pattern: "[^\"]+(?= : 클리앙)", options: .caseInsensitive)
+            filteredTitle = removeClienReg.matches(in: title, options: [], range: NSRange(location: 0, length: title.utf16.count))
+                .compactMap { Range($0.range, in: title) }
+                .map { String(title[$0]) }.first!
+            
+            
+        } catch {
+            print(error)
+        }
         
+        self.title = filteredTitle
         self.writer = writer
         self.purchaseLink = link
         self.image = image
